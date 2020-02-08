@@ -11,12 +11,9 @@ class UserResolver {
         this._userService = Container.resolve(UserService)
     }
 
-    @Query(() => User)
+    @Query(() => User, { nullable: true })
     async user(@Arg('id') id: string): Promise<User> {
-
-        await this._userService.getUser(id)
-
-        return { id, firstName: 'Greg', lastName: 'Ellis' }
+        return this._userService.getUser(id)
     }
 }
 

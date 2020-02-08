@@ -1,16 +1,15 @@
-import { Client, ClientConfig } from 'pg'
+import { Pool, PoolConfig } from 'pg'
 import { injectable } from 'inversify'
 
 @injectable()
-export class DatabaseConfig implements ClientConfig { }
+export class DatabaseConfig implements PoolConfig {}
 
 @injectable()
 class DatabaseContext {
-    // TODO: Create a function that connects, disconnects and executes a query that a consumer provides
-    public _client: Client
+    public _pool: Pool
 
     public constructor(databaseConfig: DatabaseConfig) {
-        this._client = new Client(databaseConfig)
+        this._pool = new Pool(databaseConfig)
     }
 }
 

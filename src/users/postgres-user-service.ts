@@ -12,16 +12,24 @@ class PostgresUserService implements UserService {
     }
 
     public async getUser(id: string): Promise<User> {
-        // TODO: Implement real call
-        await this._databaseContext._client.connect()
+        const query = {
+            text: `
+                SELECT id
+                    , first_name AS "firstName"
+                    , last_name AS "lastName"
+                FROM user_v1
+                WHERE id = $1::uuid;
+            `,
+            values: [id]
+        }
 
-        const res = await this._databaseContext._client.query('SELECT $1::text as message', ['Hello world!'])
+        const res = await this._databaseContext._pool.query<User>(query)
 
-        console.log(res.rows[0].message + id)
+        if (res.rows.length > 1) {
+            throw new Error('Multiple users found with Id')
+        }
 
-        await this._databaseContext._client.end()
-
-        return null
+        return res.rows?.[0]
     }
 }
 

@@ -1,0 +1,14 @@
+printWidth: 120
+singleQuote: true
+semi: false
+tabWidth: 4
+jsxBracketSameLine: true
+quoteProps: consistent
+overrides:
+    - files:
+          - '*.json'
+          - '.*.json'
+          - '*.css'
+          - '*.less'
+      options:
+          tabWidth: 2

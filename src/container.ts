@@ -2,19 +2,20 @@ import { Container } from 'inversify'
 import UserService from './users/user-service'
 import DatabaseContext, { DatabaseConfig } from './database-context'
 import PostgresUserService from './users/postgres-user-service'
+import config from './config'
 
 const container = new Container()
 
 export function configureContainer(): void {
     const databaseConfig: DatabaseConfig = {
-        user: 'postgres',
-        database: 'lunchpicker',
-        password: 'yourStrong(!)Password',
-        host: '10.0.75.1'
+        ...config.database
     }
 
     container.bind<DatabaseConfig>(DatabaseConfig).toConstantValue(databaseConfig)
-    container.bind<DatabaseContext>(DatabaseContext).to(DatabaseContext)
+    container
+        .bind<DatabaseContext>(DatabaseContext)
+        .to(DatabaseContext)
+        .inSingletonScope()
     container.bind<UserService>(PostgresUserService).to(PostgresUserService)
 }
 
