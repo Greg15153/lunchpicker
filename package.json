@@ -28,7 +28,8 @@
     "pg": "^7.17.0",
     "pg-pool": "^2.0.10",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.6"
+    "type-graphql": "^0.17.6",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
@@ -40,6 +41,7 @@
     "@types/node": "^13.1.4",
     "@types/pg": "^7.14.1",
     "@types/pg-pool": "^2.0.2",
+    "@types/uuid": "^3.4.7",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "eslint": "^6.8.0",

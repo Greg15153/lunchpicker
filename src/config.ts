@@ -22,6 +22,9 @@ const config = {
         password: process.env.DATABASE_PASSWORD,
         host: process.env.DATABASE_HOST,
         port: process.env.DATABASE_PORT
+    },
+    system: {
+        adminId: '090b3e9a-7a7f-4da0-b0b5-6d4707178791'
     }
 }
 
