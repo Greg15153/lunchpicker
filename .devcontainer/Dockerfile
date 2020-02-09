@@ -16,6 +16,10 @@ ARG USER_GID=$USER_UID
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
+COPY git-prompt.sh /home/$USERNAME/git-prompt.sh
+
+RUN echo "source /home/${USERNAME}/git-prompt.sh" >> /home/$USERNAME/.bashrc
+    
 # Configure apt and install packages
 RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \ 
