@@ -16,12 +16,6 @@ ARG USER_GID=$USER_UID
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update bashrc
-COPY git-prompt.sh /home/$USERNAME/git-prompt.sh
-
-RUN echo "source /home/${USERNAME}/git-prompt.sh" >> /home/$USERNAME/.bashrc \
-    && echo "sudo chmod 666 /var/run/docker.sock" >> /home/$USERNAME/.bashrc
-
 # Configure apt and install packages
 RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \ 
@@ -73,6 +67,12 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
+
+# Update bashrc
+RUN curl https://raw.githubusercontent.com/lyze/posh-git-sh/master/git-prompt.sh -o /home/$USERNAME/git-prompt.sh \
+    && echo "source /home/${USERNAME}/git-prompt.sh" >> /home/$USERNAME/.bashrc \
+    && echo "sudo chmod 666 /var/run/docker.sock" >> /home/$USERNAME/.bashrc \
+    && echo "export PROMPT_COMMAND='__posh_git_ps1 \"\\u@\\h:\\w \" \"\\\\\\$ \";'$PROMPT_COMMAND" >> /home/$USERNAME/.bashrc
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
