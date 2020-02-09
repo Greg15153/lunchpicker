@@ -1,6 +1,4 @@
-CREATE DATABASE lunchpicker;
-
-CREATE TABLE user_base (
+CREATE TABLE IF NOT EXISTS user_base (
     db_id         SERIAL      PRIMARY KEY
   , id            UUID        NOT NULL
   , first_name    VARCHAR     NULL
@@ -13,7 +11,7 @@ CREATE TABLE user_base (
   , UNIQUE(id)
 );
 
-CREATE TABLE user_history (
+CREATE TABLE IF NOT EXISTS user_history (
     db_id         BIGINT      NOT NULL
   , id            UUID        NOT NULL
   , first_name    VARCHAR     NULL
