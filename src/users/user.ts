@@ -20,9 +20,9 @@ class User extends Entity {
     static New(properties: UserProperties, createdBy: string): Result<User, NewUserError> {
         const errs: UserValidationError[] = []
 
-        type validator<T> = (name: string, property: T) => Result<T, unknown>
+        type validator = (name: string, property: unknown) => Result<unknown, unknown>
 
-        const validate = <T>(name: string, property: T, validator: validator<T>): void => {
+        const validate = (name: string, property: unknown, validator: validator): void => {
             const result = validator(name, property)
 
             if (result.isErr) {
