@@ -5,4 +5,4 @@ export type LastNameRequiredError = RequiredStringError
 
 export type ValidationError = FirstNameRequiredError | LastNameRequiredError
 
-export type NewUserError = ValidationError[] | string
+export type NewUserError = ValidationError[]
