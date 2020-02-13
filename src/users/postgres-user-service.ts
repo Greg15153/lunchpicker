@@ -1,5 +1,5 @@
 import { injectable } from 'inversify'
-import DatabaseContext from '../database-context'
+import DatabaseContext from '../util/database-context'
 import UserService from './user-service'
 import User from './user'
 

@@ -1,6 +1,9 @@
 import { ObjectType, Field, ID, InputType } from 'type-graphql'
 import { v4 as uuid } from 'uuid'
 import Entity from '../util/entity'
+import Result, { Ok, Err } from '../util/result'
+import { NewUserError, ValidationError as UserValidationError } from './errors'
+import { isRequiredString } from '../util/validators'
 
 @InputType({ description: 'New user data' })
 export class UserProperties {
@@ -14,19 +17,29 @@ export class UserProperties {
 @ObjectType()
 class User extends Entity {
     // TODO: Make this immutable through New method / database only
-    // TODO: Create Domain exceptions
-    static New(properties: UserProperties, createdBy: string): User {
-        if (!properties.firstName) {
-            throw new Error('First name required')
+    static New(properties: UserProperties, createdBy: string): Result<User, NewUserError> {
+        const errs: UserValidationError[] = []
+
+        type validator<T> = (name: string, property: T) => Result<T, unknown>
+
+        const validate = <T>(name: string, property: T, validator: validator<T>): void => {
+            const result = validator(name, property)
+
+            if (result.isErr) {
+                errs.push(result.error as UserValidationError)
+            }
         }
 
-        if (!properties.lastName) {
-            throw new Error('Last name required')
+        validate('firstName', properties.firstName, isRequiredString)
+        validate('lastName', properties.lastName, isRequiredString)
+
+        if (errs.length > 0) {
+            return new Err(errs)
         }
 
         const createdDate = new Date()
 
-        return {
+        const user = {
             id: uuid(),
             ...properties,
             metadata: {
@@ -36,6 +49,8 @@ class User extends Entity {
                 modifiedDate: createdDate
             }
         }
+
+        return new Ok(user)
     }
 
     @Field(() => ID)

@@ -3,6 +3,8 @@ import User, { UserProperties } from './user'
 import UserService from './postgres-user-service'
 import Container from '../container'
 import config from '../config'
+import { NewUserError } from './errors'
+import Result from '../util/result'
 
 @Resolver(User)
 class UserResolver {
@@ -18,13 +20,17 @@ class UserResolver {
     }
 
     @Mutation(() => User)
-    async addUser(@Arg('data') addUserData: UserProperties): Promise<User> {
+    async addUser(@Arg('data') addUserData: UserProperties): Promise<Result<User, NewUserError>> {
         // TODO: Authentication to not use systemAdminId
-        const user = User.New(addUserData, config.system.adminId)
+        const result = User.New(addUserData, config.system.adminId)
 
-        await this._userService.addUser(user)
+        if (result.isErr) {
+            return result
+        }
 
-        return user
+        await this._userService.addUser(result.value)
+
+        return result
     }
 }
 

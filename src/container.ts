@@ -1,6 +1,6 @@
 import { Container } from 'inversify'
 import UserService from './users/user-service'
-import DatabaseContext, { DatabaseConfig } from './database-context'
+import DatabaseContext, { DatabaseConfig } from './util/database-context'
 import PostgresUserService from './users/postgres-user-service'
 import config from './config'
 
