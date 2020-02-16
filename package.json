@@ -1,90 +1,35 @@
 {
-  "name": "lunchpicker",
-  "version": "1.0.0",
-  "description": "Pick Lunch",
-  "author": "Greg Ellis <4452658+Greg15153@users.noreply.github.com>",
-  "main": "server.js",
   "private": true,
+  "workspaces": [
+    "src/app",
+    "src/server"
+  ],
   "scripts": {
-    "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "node --inspect=5858 -r ts-node/register ./src/index.ts",
-    "start:watch": "nodemon",
-    "test": "jest"
-  },
-  "dependencies": {
-    "apollo-server-koa": "^2.9.15",
-    "dotenv": "^8.2.0",
-    "express": "^4.16.1",
-    "graphql": "^14.5.8",
-    "graphql-tools": "^4.0.6",
-    "inversify": "^5.0.1",
-    "koa": "^2.11.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-json": "^2.0.2",
-    "koa-logger": "^3.2.1",
-    "koa-router": "^7.4.0",
-    "pg": "^7.17.0",
-    "pg-pool": "^2.0.10",
-    "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.6",
-    "uuid": "^3.4.0"
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "start": "yarn workspaces foreach -p -a -i run start",
+    "test": "yarn workspaces foreach -p -a run test"
   },
   "devDependencies": {
-    "@types/dotenv": "^8.2.0",
-    "@types/jest": "^25.1.2",
-    "@types/koa": "^2.11.0",
-    "@types/koa-bodyparser": "^4.3.0",
-    "@types/koa-json": "^2.0.18",
-    "@types/koa-logger": "^3.1.1",
-    "@types/koa-router": "^7.0.42",
-    "@types/node": "^13.1.4",
-    "@types/pg": "^7.14.1",
-    "@types/pg-pool": "^2.0.2",
-    "@types/uuid": "^3.4.7",
-    "@typescript-eslint/eslint-plugin": "^2.14.0",
-    "@typescript-eslint/parser": "^2.14.0",
+    "@types/eslint": "6.1.8",
+    "@types/prettier": "1.19.0",
+    "@types/react": "16.9.19",
+    "@types/react-dom": "16.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "@yarnpkg/pnpify": "^2.0.0-rc.18",
     "eslint": "^6.8.0",
-    "jest": "^25.1.0",
-    "nodemon": "^2.0.2",
+    "eslint-plugin-react": "^7.18.3",
     "prettier": "^1.19.1",
-    "ts-jest": "^25.2.0",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "webpack-cli": "^3.3.11"
   },
-  "nodemonConfig": {
-    "ignore": [
-      "**/*.test.ts",
-      "**/*.spec.ts",
-      ".git",
-      "node_modules"
-    ],
-    "watch": [
-      "src"
-    ],
-    "exec": "npm start",
-    "ext": "ts"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "testPathIgnorePatterns": [
-      "/lib/",
-      "/node_modules/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "collectCoverage": true
+  "dependencies": {
+    "cra-template-typescript": "1.0.2",
+    "create-react-app": "^3.4.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-scripts": "3.4.0"
   }
 }

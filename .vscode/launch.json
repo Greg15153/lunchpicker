@@ -7,9 +7,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch via NPM",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run-script", "start:watch"],
+      "name": "Server",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["workspace", "server", "start"],
       "port": 5858,
       "skipFiles": ["<node_internals>/**"]
     },
