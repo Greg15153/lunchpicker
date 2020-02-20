@@ -1,35 +1,20 @@
 {
   "private": true,
   "workspaces": [
-    "src/app",
-    "src/server"
+    "src/app"
   ],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
-    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
-    "start": "yarn workspaces foreach -p -a -i run start",
-    "test": "yarn workspaces foreach -p -a run test"
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
     "@types/eslint": "6.1.8",
     "@types/prettier": "1.19.0",
-    "@types/react": "16.9.19",
-    "@types/react-dom": "16.9.5",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
-    "@yarnpkg/pnpify": "^2.0.0-rc.18",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
-    "prettier": "^1.19.1",
-    "typescript": "^3.7.5",
-    "webpack-cli": "^3.3.11"
-  },
-  "dependencies": {
-    "cra-template-typescript": "1.0.2",
-    "create-react-app": "^3.4.0",
-    "react": "16.12.0",
-    "react-dom": "16.12.0",
-    "react-scripts": "3.4.0"
+    "prettier": "^1.19.1"
   }
 }

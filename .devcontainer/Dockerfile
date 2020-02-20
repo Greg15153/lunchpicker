@@ -33,8 +33,6 @@ RUN apt-get update \
     && echo "deb https://dl.yarnpkg.com/$(lsb_release -is | tr '[:upper:]' '[:lower:]')/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
     && apt-get -y install --no-install-recommends yarn \
-    # TEMPORARILY INSTALL YARN@BERRY UNTIL DEBIAN PACKAGE IS UPDATED TO 1.22
-    && npm install -g yarn@berry \ 
     #
     # Install Docker CE CLI
     && apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common lsb-release \

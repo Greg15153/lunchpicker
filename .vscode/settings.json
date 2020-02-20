@@ -30,7 +30,7 @@
   },
   "eslint.format.enable": true,
   "npm.packageManager": "yarn",
-  "eslint.nodePath": ".vscode/pnpify",
-  "prettier.prettierPath": ".vscode/pnpify/prettier/index.js",
-  "typescript.tsdk": ".vscode/pnpify/typescript/lib"
+  "prettier.packageManager": "yarn",
+  "prettier.prettierPath": "./node_modules/prettier",
+  "eslint.packageManager": "yarn"
 }

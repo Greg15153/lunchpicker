@@ -9,6 +9,7 @@ module.exports = {
         'plugin:react/recommended'
     ],
     rules: {
+        'react/prop-types': 0,
         '@typescript-eslint/adjacent-overload-signatures': 'error',
         '@typescript-eslint/array-type': 'error',
 
