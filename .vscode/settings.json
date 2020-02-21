@@ -32,5 +32,6 @@
   "npm.packageManager": "yarn",
   "prettier.packageManager": "yarn",
   "prettier.prettierPath": "./node_modules/prettier",
-  "eslint.packageManager": "yarn"
+  "eslint.packageManager": "yarn",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

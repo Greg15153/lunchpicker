@@ -5,24 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Next: Chrome",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}/src/app"
-    },
-    {
       "type": "node",
       "request": "launch",
-      "name": "Next: Node",
-      "cwd": "${workspaceFolder}/src/app",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/next/dist/bin/next",
-      "env": {
-        "NODE_OPTIONS": "--inspect"
-      },
+      "name": "Server",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["workspace", "server", "run", "start:debug"],
       "port": 9229,
-      "sourceMaps": true,
-      "console": "integratedTerminal"
+      "skipFiles": ["<node_internals>/**"]
     },
     {
       "type": "node",

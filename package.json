@@ -1,7 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "src/app"
+    "src/server"
   ],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
