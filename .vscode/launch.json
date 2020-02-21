@@ -11,7 +11,10 @@
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["workspace", "app", "run", "start:debug"],
       "port": 9229,
-      "skipFiles": ["<node_internals>/**"]
+      "skipFiles": ["<node_internals>/**"],
+      "env": {
+        "NODE_ENV": "development"
+      }
     },
     {
       "type": "node",

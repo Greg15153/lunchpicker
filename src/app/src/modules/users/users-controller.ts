@@ -1,19 +1,18 @@
-import { Controller, Get } from '@nestjs/common'
-import User from './user'
-
-const users: User[] = [
-    {
-        id: '123-123-123',
-        firstName: 'Greg',
-        lastName: 'Ellis'
-    }
-]
+import { Controller, Get, Param } from '@nestjs/common'
+import User from './models/user'
+import UsersService from './user-service'
 
 @Controller('users')
 class UsersController {
-    @Get()
-    async getUsers(): Promise<User[]> {
-        return users
+    private readonly usersService: UsersService
+
+    public constructor(usersService: UsersService) {
+        this.usersService = usersService
+    }
+
+    @Get(':id')
+    async getUsers(@Param('id') id: string): Promise<User> {
+        return this.usersService.getUser(id)
     }
 }
 

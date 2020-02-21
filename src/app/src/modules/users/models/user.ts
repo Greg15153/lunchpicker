@@ -1,18 +1,17 @@
 import { v4 as uuid } from 'uuid'
-import Entity from '../../util/entity'
-import Result, { Ok, Err } from '../../util/result'
-import { NewUserError, ValidationError as UserValidationError } from './errors'
-import { isRequiredString } from '../../util/validators'
-
-export interface UserProperties {
-    firstName: string
-
-    lastName: string
-}
+import Entity from '../../../util/entity'
+import Result, { Ok, Err } from '../../../util/result'
+import { NewUserError, ValidationError as UserValidationError } from '../errors'
+import { isRequiredString } from '../../../util/validators'
+import CreateUserDto from '../dto/create-user'
 
 class User extends Entity {
+    private constructor() {
+        super()
+    }
+
     // TODO: Make this immutable through New method / database only
-    static New(properties: UserProperties, createdBy: string): Result<User, NewUserError> {
+    static New(dto: CreateUserDto, createdBy: string): Result<User, NewUserError> {
         const errs: UserValidationError[] = []
 
         type validator = (name: string, property: string) => Result<unknown, unknown>
@@ -25,8 +24,8 @@ class User extends Entity {
             }
         }
 
-        validate('firstName', properties.firstName, isRequiredString)
-        validate('lastName', properties.lastName, isRequiredString)
+        validate('firstName', dto.firstName, isRequiredString)
+        validate('lastName', dto.lastName, isRequiredString)
 
         if (errs.length > 0) {
             return new Err(errs)
@@ -36,7 +35,7 @@ class User extends Entity {
 
         const user = {
             id: uuid(),
-            ...properties,
+            ...dto,
             metadata: {
                 createdBy,
                 createdDate,
@@ -48,11 +47,11 @@ class User extends Entity {
         return new Ok(user)
     }
 
-    readonly id!: string
+    readonly id: string
 
-    readonly firstName!: string
+    readonly firstName: string
 
-    readonly lastName!: string
+    readonly lastName: string
 }
 
 export default User

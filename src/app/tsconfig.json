@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "DOM.Iterable", "ES6"],
     "allowJs": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -10,7 +10,7 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "ESNext",
+    "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",

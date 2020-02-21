@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common'
-import DatabaseContext from '../../util/database-context'
-import UserService from './user-service'
-import User from './user'
+import DatabaseContext from '../../database/database-context'
+import User from '../models/user'
+import UsersRepository from './users-repository'
 
 @Injectable()
-class PostgresUserService implements UserService {
+class PostgresUsersRepository implements UsersRepository {
     private _databaseContext: DatabaseContext
 
     public constructor(databaseContext: DatabaseContext) {
@@ -66,4 +66,4 @@ class PostgresUserService implements UserService {
     }
 }
 
-export default PostgresUserService
+export default PostgresUsersRepository

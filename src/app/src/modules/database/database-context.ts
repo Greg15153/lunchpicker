@@ -1,15 +1,18 @@
-import { Pool, PoolConfig, QueryConfig, QueryResultRow, QueryResult } from 'pg'
-import { Injectable } from '@nestjs/common'
-
-@Injectable()
-export class DatabaseConfig implements PoolConfig {}
+import { Pool, QueryConfig, QueryResultRow, QueryResult } from 'pg'
+import { Injectable, Inject } from '@nestjs/common'
+import { ConfigType } from '@nestjs/config'
+import databaseConfig from './database-config'
 
 @Injectable()
 class DatabaseContext {
     private _pool: Pool
 
-    public constructor(databaseConfig: DatabaseConfig) {
-        this._pool = new Pool(databaseConfig)
+    constructor(
+        @Inject(databaseConfig.KEY)
+        configuration: ConfigType<typeof databaseConfig>
+    ) {
+        console.log(configuration)
+        this._pool = new Pool(configuration)
     }
 
     public async query<R extends QueryResultRow>(queryConfig: QueryConfig): Promise<QueryResult<R>> {
