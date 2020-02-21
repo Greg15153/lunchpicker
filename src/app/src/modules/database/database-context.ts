@@ -11,7 +11,6 @@ class DatabaseContext {
         @Inject(databaseConfig.KEY)
         configuration: ConfigType<typeof databaseConfig>
     ) {
-        console.log(configuration)
         this._pool = new Pool(configuration)
     }
 

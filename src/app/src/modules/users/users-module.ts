@@ -14,6 +14,7 @@ import { UsersRepositoryTypeName } from './infrastructure/users-repository'
             useClass: PostgresUsersRepository
         },
         UsersService
-    ]
+    ],
+    exports: [UsersService]
 })
 export default class UsersModule {}

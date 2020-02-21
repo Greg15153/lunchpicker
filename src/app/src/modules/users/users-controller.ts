@@ -10,6 +10,7 @@ class UsersController {
         this.usersService = usersService
     }
 
+    // API
     @Get(':id')
     async getUsers(@Param('id') id: string): Promise<User> {
         return this.usersService.getUser(id)

@@ -1,24 +1,20 @@
-import { Controller, Get, Render } from '@nestjs/common'
-import { AppService } from './app.service'
-
-interface User {
-    name: string
-}
+import { Controller, Get, Render, Param } from '@nestjs/common'
+import User from './modules/users/models/user'
+import UsersService from './modules/users/user-service'
 
 @Controller()
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly usersService: UsersService) {}
 
     @Get()
     @Render('index')
-    public showHome(): User {
-        const user = { name: 'NestJS' }
-
-        return user
+    public showHome(): void {
+        return
     }
 
-    @Get()
-    getHello(): string {
-        return this.appService.getHello()
+    @Get('profile/:id')
+    @Render('profile')
+    public async showProfile(@Param('id') id: string): Promise<User> {
+        return this.usersService.getUser(id)
     }
 }
