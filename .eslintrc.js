@@ -8,6 +8,14 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended'
     ],
+    overrides: [
+        {
+            files: ['*.js'],
+            rules: {
+                '@typescript-eslint/explicit-function-return-type': 'off'
+            }
+        }
+    ],
     rules: {
         'react/prop-types': 0,
         '@typescript-eslint/adjacent-overload-signatures': 'error',

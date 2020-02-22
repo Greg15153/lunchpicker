@@ -2,9 +2,12 @@ import React from 'react'
 import { Document, Head, Main } from '@react-ssr/nestjs-express'
 
 const style = {
-    padding: 0,
-    margin: 0
+    'font-family': 'sans-serif',
+    'padding': 0,
+    'margin': 0,
+    'box-sizing': 'border-box'
 }
+
 export default class extends Document {
     render(): JSX.Element {
         return (
