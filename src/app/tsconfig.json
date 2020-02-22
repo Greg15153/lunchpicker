@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
     "strict": false,
@@ -16,5 +17,6 @@
     "baseUrl": "./",
     "incremental": true
   },
+  "include": ["server", "modules"],
   "exclude": ["node_modules", "./ssr.config.js", "./.ssr", "dist"]
 }

@@ -14,7 +14,9 @@
       "skipFiles": ["<node_internals>/**"],
       "env": {
         "NODE_ENV": "development"
-      }
+      },
+      "timeout": 300000,
+      "console": "integratedTerminal"
     },
     {
       "type": "node",
