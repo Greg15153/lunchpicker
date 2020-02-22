@@ -9,7 +9,6 @@ initializeIcons(undefined, iconOptions)
 const Layout: FunctionComponent = ({ children }): JSX.Element => {
     return (
         <>
-            <div style={{ backgroundColor: '#000000', height: 100 }} />
             <div>{children}</div>
         </>
     )
