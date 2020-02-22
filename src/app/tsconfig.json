@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "target": "ES2017",
     "module": "commonjs",
     "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable", "ES6"],
+    "lib": ["DOM", "DOM.Iterable"],
     "allowJs": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -10,7 +11,6 @@
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "ES6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",

@@ -1,15 +1,18 @@
 import React, { FunctionComponent } from 'react'
+import { initializeIcons, setIconOptions } from 'office-ui-fabric-react'
+const iconOptions = {
+    disableWarnings: true
+}
+setIconOptions(iconOptions)
+initializeIcons(undefined, iconOptions)
 
-const Layout: FunctionComponent = ({ children }): JSX.Element => (
-    <>
-        <ul>
-            <li>
-                <a href="/">Home</a>
-                <a href="/profile/090b3e9a-7a7f-4da0-b0b5-6d4707178791">My Profile</a>
-            </li>
-        </ul>
-        <div>{children}</div>
-    </>
-)
+const Layout: FunctionComponent = ({ children }): JSX.Element => {
+    return (
+        <>
+            <div style={{ backgroundColor: '#000000', height: 100 }} />
+            <div>{children}</div>
+        </>
+    )
+}
 
 export default Layout
