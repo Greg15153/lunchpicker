@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "commonjs",
+    "target": "es2017",
+    "module": "esnext",
     "jsx": "preserve",
-    "lib": ["DOM", "DOM.Iterable"],
-    "allowJs": false,
-    "esModuleInterop": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": false,
+    "allowJs": true,
     "skipLibCheck": true,
-    "declaration": true,
+    "esModuleInterop": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,6 +16,5 @@
     "baseUrl": "./",
     "incremental": true
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "dist", "ssr.config.js", ".ssr"]
+  "exclude": ["node_modules", "./ssr.config.js", "./.ssr", "dist"]
 }

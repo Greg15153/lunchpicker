@@ -1,6 +1,6 @@
 import { Controller, Get, Render, Param } from '@nestjs/common'
-import User from './modules/users/models/user'
-import UsersService from './modules/users/user-service'
+import User from '../modules/users/models/user'
+import UsersService from '../modules/users/user-service'
 
 @Controller()
 export class AppController {
