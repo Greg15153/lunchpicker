@@ -2,7 +2,7 @@ import UsersRepository, { UsersRepositoryTypeName } from './infrastructure/users
 import User from './models/user'
 import CreateUserDto from './dto/create-user'
 import { NewUserError } from './errors'
-import Result from 'src/util/result'
+import Result from 'util/result'
 import { Inject } from '@nestjs/common'
 
 class UsersService {

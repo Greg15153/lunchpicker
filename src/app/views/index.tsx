@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { SearchBox, List, ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react'
+import useLocation from '../hooks/useLocation'
 import Layout from './layout'
 
 interface Business {
@@ -94,10 +95,15 @@ const onRenderCell = (item: Business): JSX.Element => (
     </div>
 )
 
-const Index: FunctionComponent = (): JSX.Element => (
-    <Layout>
-        <SearchBox placeholder="Location" />
-        <List className={classNames.listGridExample} items={items} onRenderCell={onRenderCell} />
-    </Layout>
-)
+const Index: FunctionComponent = (): JSX.Element => {
+    const location = useLocation()
+
+    console.log(location)
+    return (
+        <Layout>
+            <SearchBox placeholder="Location" />
+            <List className={classNames.listGridExample} items={items} onRenderCell={onRenderCell} />
+        </Layout>
+    )
+}
 export default Index

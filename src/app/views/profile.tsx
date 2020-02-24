@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import User from 'src/modules/users/models/user'
+import User from 'modules/users/models/user'
 import Layout from './layout'
 
 const Index: FunctionComponent<User> = ({ id, firstName, lastName }): JSX.Element => (
