@@ -1,6 +1,3 @@
-#!/bin/bash
-set +H # Disable expansion history
-
 HOST=db
 PORT=5432
 USERNAME=postgres

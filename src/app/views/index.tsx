@@ -119,20 +119,21 @@ const Index: FunctionComponent = (): JSX.Element => {
     return (
         <div>
             <Layout style={{ minHeight: '100vh' }}>
-                <Layout.Sider collapsible collapsed={collapsed} onCollapse={(): void => setCollapsed(s => !s)}>
-                    <Menu theme="dark" mode="inline">
-                        <Menu.Item key="1">
-                            <span>Option 1</span>
-                        </Menu.Item>
-                    </Menu>
-                </Layout.Sider>
+                <Layout.Header>
+                    <div className="search-wrapper">
+                        <Input addonAfter={<Icon type="search" theme="outlined" />} />
+                    </div>
+                </Layout.Header>
                 <Layout>
-                    <Layout.Header>
-                        <div className="search-wrapper">
-                            <Input addonAfter={<Icon type="search" />} />
-                        </div>
-                    </Layout.Header>
-                    <Layout.Content>
+                    <Layout.Sider collapsible collapsed={collapsed} onCollapse={(): void => setCollapsed(s => !s)}>
+                        <Menu theme="dark" mode="inline">
+                            <Menu.Item key="1">
+                                <Icon type="search" />
+                                <span>Option 1</span>
+                            </Menu.Item>
+                        </Menu>
+                    </Layout.Sider>
+                    <Layout.Content className="main">
                         <Row>
                             <Col span={12} offset={6}>
                                 <List
@@ -145,8 +146,8 @@ const Index: FunctionComponent = (): JSX.Element => {
                                 />
                             </Col>
                         </Row>
+                        <Layout.Footer>{'Footer content'}</Layout.Footer>
                     </Layout.Content>
-                    <Layout.Footer>{'Footer content'}</Layout.Footer>
                 </Layout>
             </Layout>
         </div>
