@@ -29,18 +29,16 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
     const path = `${__dirname}${relative}.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`
 
     try {
-        fs.exists(path, exists => {
-            if (exists) {
-                return {
-                    envFilePath: path,
-                    ignoreEnvFile: false
-                }
-            } else {
-                return {
-                    ignoreEnvFile: true
-                }
+        if (fs.existsSync(path)) {
+            return {
+                envFilePath: path,
+                ignoreEnvFile: false
             }
-        })
+        } else {
+            return {
+                ignoreEnvFile: true
+            }
+        }
     } catch {
         return {
             ignoreEnvFile: true
