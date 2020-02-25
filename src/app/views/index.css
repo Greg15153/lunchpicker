@@ -1,0 +1,10 @@
+.ant-layout-header {
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper {
+  width: 30rem;
+  display: flex;
+  align-items: center;
+}

@@ -1,7 +1,9 @@
-import React, { FunctionComponent } from 'react'
-import { SearchBox, List, ITheme, getTheme, mergeStyleSets } from 'office-ui-fabric-react'
+import './index.css'
+
+import { Card, Col, Icon, Input, Layout, List, Menu, Row } from 'antd'
+import React, { FunctionComponent, useState } from 'react'
+
 import useLocation from '../hooks/useLocation'
-import Layout from './layout'
 
 interface Business {
     id: number
@@ -19,91 +21,135 @@ const items: Business[] = [
         id: 2,
         name: 'McDonalds',
         thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 3,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 4,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 5,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 6,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 7,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 8,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 9,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 10,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 11,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 12,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 13,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 14,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 15,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 16,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
+    },
+    {
+        id: 17,
+        name: 'Burger King',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1229180816435142660/MLoubJPL_400x400.jpg'
+    },
+    {
+        id: 18,
+        name: 'McDonalds',
+        thumbnail: 'https://pbs.twimg.com/profile_images/1150268408287698945/x4f3ITmx_400x400.png'
     }
 ]
 
-const theme: ITheme = getTheme()
-const { palette, fonts } = theme
-
-const classNames = mergeStyleSets({
-    listGridExample: {
-        overflow: 'hidden',
-        fontSize: 0,
-        position: 'relative'
-    },
-    listGridExampleTile: {
-        textAlign: 'center',
-        outline: 'none',
-        position: 'relative',
-        float: 'left',
-        background: palette.neutralLighter,
-        selectors: {
-            'focus:after': {
-                content: '',
-                position: 'absolute',
-                left: 2,
-                right: 2,
-                top: 2,
-                bottom: 2,
-                boxSizing: 'border-box',
-                border: `1px solid ${palette.white}`
-            }
-        }
-    },
-    listGridExampleSizer: {
-        paddingBottom: '100%'
-    },
-    listGridExamplePadder: {
-        position: 'absolute',
-        left: 2,
-        top: 2,
-        right: 2,
-        bottom: 2
-    },
-    listGridExampleLabel: {
-        background: 'rgba(0, 0, 0, 0.3)',
-        color: '#FFFFFF',
-        position: 'absolute',
-        padding: 10,
-        bottom: 0,
-        left: 0,
-        width: '100%',
-        fontSize: fonts.small.fontSize,
-        boxSizing: 'border-box'
-    },
-    listGridExampleImage: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%'
-    }
-})
-
 const onRenderCell = (item: Business): JSX.Element => (
-    <div
-        className={classNames.listGridExampleTile}
-        data-is-focusable={true}
-        style={{
-            width: 100
-        }}>
-        <div className={classNames.listGridExampleSizer}>
-            <div className={classNames.listGridExamplePadder}>
-                <img src={item.thumbnail} className={classNames.listGridExampleImage} />
-                <span className={classNames.listGridExampleLabel}>{item.name}</span>
-            </div>
-        </div>
-    </div>
+    <List.Item>
+        <Card style={{ width: 140 }} hoverable cover={<img src={item.thumbnail} />}>
+            <Card.Meta title={item.name} />
+        </Card>
+    </List.Item>
 )
 
 const Index: FunctionComponent = (): JSX.Element => {
     const location = useLocation()
+    const [collapsed, setCollapsed] = useState(false)
 
-    console.log(location)
     return (
-        <Layout>
-            <SearchBox placeholder="Location" />
-            <List className={classNames.listGridExample} items={items} onRenderCell={onRenderCell} />
-        </Layout>
+        <div>
+            <Layout style={{ minHeight: '100vh' }}>
+                <Layout.Sider collapsible collapsed={collapsed} onCollapse={(): void => setCollapsed(s => !s)}>
+                    <Menu theme="dark" mode="inline">
+                        <Menu.Item key="1">
+                            <span>Option 1</span>
+                        </Menu.Item>
+                    </Menu>
+                </Layout.Sider>
+                <Layout>
+                    <Layout.Header>
+                        <div className="search-wrapper">
+                            <Input addonAfter={<Icon type="search" />} />
+                        </div>
+                    </Layout.Header>
+                    <Layout.Content>
+                        <Row>
+                            <Col span={12} offset={6}>
+                                <List
+                                    grid={{ gutter: 10, xs: 1, sm: 2, md: 4, lg: 6 }}
+                                    itemLayout="horizontal"
+                                    bordered={false}
+                                    size="small"
+                                    dataSource={items}
+                                    renderItem={onRenderCell}
+                                />
+                            </Col>
+                        </Row>
+                    </Layout.Content>
+                    <Layout.Footer>{'Footer content'}</Layout.Footer>
+                </Layout>
+            </Layout>
+        </div>
     )
 }
 export default Index

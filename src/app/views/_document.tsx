@@ -1,5 +1,5 @@
-import React from 'react'
 import { Document, Head, Main } from '@react-ssr/nestjs-express'
+import React from 'react'
 
 const style = {
     'font-family': 'sans-serif',
