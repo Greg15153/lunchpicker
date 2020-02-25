@@ -15,6 +15,14 @@
     "@typescript-eslint/parser": "^2.19.2",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.18.3",
-    "prettier": "^1.19.1"
+    "import-sort-style-module": "^6.0.0",
+    "prettier": "^1.19.1",
+    "prettier-plugin-import-sort": "^0.0.3"
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
   }
 }

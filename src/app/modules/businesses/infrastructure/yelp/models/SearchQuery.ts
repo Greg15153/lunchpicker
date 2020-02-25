@@ -1,5 +1,5 @@
-import SearchOptions from 'modules/businesses/dtos/search-options'
 import e from 'express'
+import SearchOptions from 'modules/businesses/dtos/search-options'
 
 class SearchQuery {
     constructor(searchOptions: SearchOptions) {

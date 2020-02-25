@@ -1,9 +1,10 @@
-import UsersRepository, { UsersRepositoryTypeName } from './infrastructure/users-repository'
-import User from './models/user'
+import { Inject } from '@nestjs/common'
+import Result from 'util/result'
+
 import CreateUserDto from './dto/create-user'
 import { NewUserError } from './errors'
-import Result from 'util/result'
-import { Inject } from '@nestjs/common'
+import UsersRepository, { UsersRepositoryTypeName } from './infrastructure/users-repository'
+import User from './models/user'
 
 class UsersService {
     private readonly adminId: string = ''

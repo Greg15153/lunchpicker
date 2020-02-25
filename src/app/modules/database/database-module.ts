@@ -1,7 +1,8 @@
-import { Module, Global } from '@nestjs/common'
+import { Global, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import DatabaseContext from './database-context'
+
 import databaseConfig from './database-config'
+import DatabaseContext from './database-context'
 
 @Global()
 @Module({

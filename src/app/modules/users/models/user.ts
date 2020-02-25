@@ -1,9 +1,10 @@
 import { v4 as uuid } from 'uuid'
+
 import Entity from '../../../util/entity'
-import Result, { Ok, Err } from '../../../util/result'
-import { NewUserError, ValidationError as UserValidationError } from '../errors'
+import Result, { Err, Ok } from '../../../util/result'
 import { isRequiredString } from '../../../util/validators'
 import CreateUserDto from '../dto/create-user'
+import { NewUserError, ValidationError as UserValidationError } from '../errors'
 
 class User extends Entity {
     private constructor() {

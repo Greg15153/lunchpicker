@@ -1,5 +1,5 @@
-import Result, { Err, Ok } from './result'
 import { RequiredStringError } from './errors'
+import Result, { Err, Ok } from './result'
 
 export function isRequiredString(name: string, s: string): Result<string, RequiredStringError> {
     if (!s || s === undefined || s.trim() === '') {

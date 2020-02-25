@@ -1,5 +1,5 @@
-import { PoolConfig } from 'pg'
 import { registerAs } from '@nestjs/config'
+import { PoolConfig } from 'pg'
 
 type DatabaseConfig = PoolConfig
 

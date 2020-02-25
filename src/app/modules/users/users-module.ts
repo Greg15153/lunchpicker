@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common'
-import UsersController from './users-controller'
-import PostgresUsersRepository from './infrastructure/postgres-user-repository'
-import UsersService from './user-service'
+
 import { DatabaseModule } from '../database/database-module'
+import PostgresUsersRepository from './infrastructure/postgres-user-repository'
 import { UsersRepositoryTypeName } from './infrastructure/users-repository'
+import UsersService from './user-service'
+import UsersController from './users-controller'
 
 @Module({
     imports: [DatabaseModule],

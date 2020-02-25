@@ -1,6 +1,7 @@
-import { Pool, QueryConfig, QueryResultRow, QueryResult } from 'pg'
-import { Injectable, Inject } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
 import { ConfigType } from '@nestjs/config'
+import { Pool, QueryConfig, QueryResult, QueryResultRow } from 'pg'
+
 import databaseConfig from './database-config'
 
 @Injectable()

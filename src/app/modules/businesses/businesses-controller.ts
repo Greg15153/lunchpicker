@@ -1,7 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common'
+import { Body, Controller, Post } from '@nestjs/common'
+
 import BusinessesService from './businesses-service'
-import Business from './models/business'
 import SearchOptions from './dtos/search-options'
+import Business from './models/business'
 
 @Controller('businesses')
 class BusinessesController {

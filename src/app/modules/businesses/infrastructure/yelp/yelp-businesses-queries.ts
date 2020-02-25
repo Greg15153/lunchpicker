@@ -1,14 +1,15 @@
-import BusinessesQueries from '../businesses-queries'
-import Business from '../../models/business'
 import { Inject, Injectable } from '@nestjs/common'
-import yelpConfig from '../../yelp-config'
 import { ConfigType } from '@nestjs/config'
-import Ky from 'ky-universal'
 import { Options } from 'ky'
-import SearchOptions from '../../dtos/search-options'
+import Ky from 'ky-universal'
 import queryString from 'query-string'
-import SearchResponse, { toDomain as SearchResponseToDomain } from './models/SearchResponse'
+
+import SearchOptions from '../../dtos/search-options'
+import Business from '../../models/business'
+import yelpConfig from '../../yelp-config'
+import BusinessesQueries from '../businesses-queries'
 import SearchQuery from './models/SearchQuery'
+import SearchResponse, { toDomain as SearchResponseToDomain } from './models/SearchResponse'
 
 @Injectable()
 class YelpBusinessesQueries implements BusinessesQueries {

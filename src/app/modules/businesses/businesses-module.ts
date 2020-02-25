@@ -1,10 +1,11 @@
-import { Module, Global } from '@nestjs/common'
+import { Global, Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import yelpConfig from './yelp-config'
-import BusinessesService from './businesses-service'
-import YelpBusinessesQueries from './infrastructure/yelp/yelp-businesses-queries'
-import { BusinessesQueriesTypeName } from './infrastructure/businesses-queries'
+
 import BusinessesController from './businesses-controller'
+import BusinessesService from './businesses-service'
+import { BusinessesQueriesTypeName } from './infrastructure/businesses-queries'
+import YelpBusinessesQueries from './infrastructure/yelp/yelp-businesses-queries'
+import yelpConfig from './yelp-config'
 
 @Global()
 @Module({

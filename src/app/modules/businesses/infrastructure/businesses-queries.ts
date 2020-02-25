@@ -1,5 +1,5 @@
-import Business from '../models/business'
 import SearchOptions from '../dtos/search-options'
+import Business from '../models/business'
 
 interface BusinessesQueries {
     getBusinesses(searchOptions: SearchOptions): Promise<Business[]>

@@ -1,4 +1,5 @@
-import { Controller, Get, Render, Param } from '@nestjs/common'
+import { Controller, Get, Param, Render } from '@nestjs/common'
+
 import User from '../modules/users/models/user'
 import UsersService from '../modules/users/user-service'
 
