@@ -14,7 +14,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
     const env = process.env.NODE_ENV
 
     // Only support Env vars for prod
-    if (env.toLowerCase() === 'production') {
+    if (env?.toLowerCase() === 'production') {
         return {
             ignoreEnvFile: true
         }
