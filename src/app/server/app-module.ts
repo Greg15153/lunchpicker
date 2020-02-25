@@ -3,12 +3,13 @@ import fs from 'fs'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
+import HealthCheckModule from 'modules/healthcheck/healthcheck-module'
 
 import { BusinessesModule } from '../modules/businesses/businesses-module'
 import { DatabaseModule } from '../modules/database/database-module'
 import UsersModule from '../modules/users/users-module'
 import appConfig from './app-config'
-import { AppController } from './app.controller'
+import { AppController } from './app-controller'
 
 function getEnvFileConfiguration(): ConfigModuleOptions {
     const env = process.env.NODE_ENV
@@ -55,6 +56,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         }),
         BusinessesModule,
         DatabaseModule,
+        HealthCheckModule,
         UsersModule
     ],
     controllers: [AppController]
