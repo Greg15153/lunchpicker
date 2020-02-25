@@ -1,4 +1,4 @@
-import { Global, Module } from '@nestjs/common'
+import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 
 import BusinessesController from './businesses-controller'
@@ -7,7 +7,6 @@ import { BusinessesQueriesTypeName } from './infrastructure/businesses-queries'
 import YelpBusinessesQueries from './infrastructure/yelp/yelp-businesses-queries'
 import yelpConfig from './yelp-config'
 
-@Global()
 @Module({
     imports: [ConfigModule.forFeature(yelpConfig)],
     controllers: [BusinessesController],

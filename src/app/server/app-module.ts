@@ -3,6 +3,7 @@ import fs from 'fs'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
+import { GeocodeModule } from 'modules/geocode/geocode-module'
 import HealthCheckModule from 'modules/healthcheck/healthcheck-module'
 
 import { BusinessesModule } from '../modules/businesses/businesses-module'
@@ -56,6 +57,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         }),
         BusinessesModule,
         DatabaseModule,
+        GeocodeModule,
         HealthCheckModule,
         UsersModule
     ],
