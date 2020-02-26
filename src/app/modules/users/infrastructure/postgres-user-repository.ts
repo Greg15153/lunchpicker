@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common'
+import CacheContext from 'modules/cache/cache-context'
 
 import DatabaseContext from '../../database/database-context'
 import User from '../models/user'
@@ -7,13 +8,16 @@ import UsersRepository from './users-repository'
 @Injectable()
 class PostgresUsersRepository implements UsersRepository {
     private _databaseContext: DatabaseContext
+    private _cacheContext: CacheContext
 
-    public constructor(databaseContext: DatabaseContext) {
+    public constructor(databaseContext: DatabaseContext, cacheContext: CacheContext) {
         this._databaseContext = databaseContext
+        this._cacheContext = cacheContext
     }
 
     public async getUser(id: string): Promise<User> {
         // TODO: Figure out if PG Supports object mapping better
+        console.log(this._cacheContext)
         const query = {
             text: `
                 SELECT id
