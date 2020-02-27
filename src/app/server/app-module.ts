@@ -29,7 +29,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         relative = '/../../../../'
     }
 
-    const path = `${__dirname}${relative}.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`
+    const path = `${__dirname}${relative}.env${env ? `.${env}` : ''}`
 
     try {
         if (fs.existsSync(path)) {

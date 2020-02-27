@@ -1,10 +1,10 @@
 import { registerAs } from '@nestjs/config'
-import { IRedisOptions } from 'ioredis/built/redis/RedisOptions'
+import { RedisOptions } from 'ioredis'
 
 export default registerAs(
     'cache',
-    (): IRedisOptions => ({
-        host: '',
-        port: ''
+    (): RedisOptions => ({
+        host: process.env.CACHE_HOST,
+        port: parseInt(process.env.CACHE_PORT) || 6379
     })
 )
