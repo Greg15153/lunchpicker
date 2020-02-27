@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common'
+import { CacheModule } from 'modules/cache/cache-module'
 
 import { DatabaseModule } from '../database/database-module'
 import PostgresUsersRepository from './infrastructure/postgres-user-repository'
@@ -7,7 +8,7 @@ import UsersService from './user-service'
 import UsersController from './users-controller'
 
 @Module({
-    imports: [DatabaseModule],
+    imports: [DatabaseModule, CacheModule],
     controllers: [UsersController],
     providers: [
         {

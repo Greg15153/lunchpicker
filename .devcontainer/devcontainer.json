@@ -21,5 +21,11 @@
     "apollographql.vscode-apollo",
     "esbenp.prettier-vscode",
     "msjsdiag.debugger-for-chrome"
-  ]
+  ],
+  "containerEnv": {
+    "NODE_ENV": "development"
+  },
+  "remoteEnv": {
+    "NODE_ENV": "development"
+  }
 }

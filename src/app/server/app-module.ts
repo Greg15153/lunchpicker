@@ -3,6 +3,7 @@ import fs from 'fs'
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
+import { CacheModule } from 'modules/cache/cache-module'
 import { GeocodeModule } from 'modules/geocode/geocode-module'
 import HealthCheckModule from 'modules/healthcheck/healthcheck-module'
 
@@ -28,7 +29,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         relative = '/../../../../'
     }
 
-    const path = `${__dirname}${relative}.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ''}`
+    const path = `${__dirname}${relative}.env${env ? `.${env}` : ''}`
 
     try {
         if (fs.existsSync(path)) {
@@ -59,7 +60,8 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         DatabaseModule,
         GeocodeModule,
         HealthCheckModule,
-        UsersModule
+        UsersModule,
+        CacheModule
     ],
     controllers: [AppController]
 })
