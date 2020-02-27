@@ -17,7 +17,6 @@ class PostgresUsersRepository implements UsersRepository {
 
     public async getUser(id: string): Promise<User> {
         // TODO: Figure out if PG Supports object mapping better
-        console.log(this._cacheContext)
         const query = {
             text: `
                 SELECT id

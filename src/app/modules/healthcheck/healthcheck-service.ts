@@ -38,8 +38,7 @@ class HealthCheckService {
 
     private async cache(): Promise<Result<void, Error>> {
         try {
-            await this.cacheContext.set<string>('test', 'test string')
-            await this.cacheContext.get<string>('test')
+            await this.cacheContext.ping()
             return new Ok()
         } catch (ex) {
             return new Err(ex)

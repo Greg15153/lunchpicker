@@ -19,6 +19,10 @@ class Cache {
     public async set<R>(key: string, value: R): Promise<boolean> {
         return 'OK' === (await this._cache.set(key, value))
     }
+
+    public async ping(): Promise<void> {
+        await this._cache.ping('test')
+    }
 }
 
 export default Cache
