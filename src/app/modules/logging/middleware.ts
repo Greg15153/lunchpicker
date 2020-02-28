@@ -2,7 +2,7 @@ import { Injectable, NestMiddleware, Scope } from '@nestjs/common'
 
 import LoggerService from './logger-service'
 
-Injectable({ scope: Scope.REQUEST })
+@Injectable({ scope: Scope.REQUEST })
 class LoggerMiddleware<TRequest, TResponse> implements NestMiddleware {
     public constructor(private readonly logger: LoggerService) {}
 
