@@ -1,4 +1,3 @@
-import e from 'express'
 import SearchOptions from 'modules/businesses/dtos/search-options'
 
 class SearchQuery {
