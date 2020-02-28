@@ -1,11 +1,13 @@
 import fs from 'fs'
 
-import { Module } from '@nestjs/common'
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
 import { CacheModule } from 'modules/cache/cache-module'
 import { GeocodeModule } from 'modules/geocode/geocode-module'
 import HealthCheckModule from 'modules/healthcheck/healthcheck-module'
+import LoggerMiddleware from 'modules/logging/middleware'
+import { LoggingModule } from 'modules/logging/module'
 
 import { BusinessesModule } from '../modules/businesses/businesses-module'
 import { DatabaseModule } from '../modules/database/database-module'
@@ -57,12 +59,20 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
             ...getEnvFileConfiguration()
         }),
         BusinessesModule,
+        CacheModule,
         DatabaseModule,
         GeocodeModule,
         HealthCheckModule,
-        UsersModule,
-        CacheModule
+        LoggingModule,
+        UsersModule
     ],
     controllers: [AppController]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+    configure(consumer: MiddlewareConsumer): void {
+        consumer.apply(LoggerMiddleware).forRoutes({
+            path: '*',
+            method: RequestMethod.ALL
+        })
+    }
+}
