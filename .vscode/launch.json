@@ -49,9 +49,10 @@
       "type": "node",
       "request": "launch",
       "name": "Server: Jest Tests",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": ["--config", "package.json", "--runInBand"],
-      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}/src/server",
+      "runtimeExecutable": "yarn",
+      "port": 4364,
+      "runtimeArgs": ["test:debug"],
       "console": "internalConsole",
       "env": {
         "NODE_ENV": "test"

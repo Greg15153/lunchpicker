@@ -9,7 +9,7 @@ export class ValidationError<T> extends Error {
 }
 
 export class RequiredStringError extends ValidationError<string> {
-    public constructor(name: string) {
-        super(`${name} cannot be empty or null`, undefined)
+    public constructor(name: string, attemptedValue: string = undefined) {
+        super(`${name} cannot be empty or null`, attemptedValue)
     }
 }
