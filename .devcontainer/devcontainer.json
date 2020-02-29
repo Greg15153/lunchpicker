@@ -17,12 +17,13 @@
   "postCreateCommand": "yarn install",
   // Add the IDs of extensions you want installed when the container is created in the array below.
   "extensions": [
-	"dbaeumer.vscode-eslint",
-	"apollographql.vscode-apollo",
-	"esbenp.prettier-vscode",
-	"msjsdiag.debugger-for-chrome",
-	"blanu.vscode-styled-jsx"
-],
+    "dbaeumer.vscode-eslint",
+    "apollographql.vscode-apollo",
+    "esbenp.prettier-vscode",
+    "msjsdiag.debugger-for-chrome",
+    "blanu.vscode-styled-jsx",
+    "firefox-devtools.vscode-firefox-debug"
+  ],
   "containerEnv": {
     "NODE_ENV": "development"
   },

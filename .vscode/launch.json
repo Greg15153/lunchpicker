@@ -7,22 +7,21 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "App",
+      "name": "App: Server",
       "cwd": "${workspaceFolder}/src/app",
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["dev"],
-      "port": 9228,
       "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**"],
       "env": {
         "NODE_ENV": "development"
       },
-      "timeout": 300000,
+      "port": 9228,
       "sourceMaps": true,
       "outputCapture": "std",
       "presentation": {
         "hidden": false,
-        "group": "development",
-        "order": 2
+        "group": "a - development",
+        "order": 4
       }
     },
     {
@@ -42,8 +41,8 @@
       "outputCapture": "std",
       "presentation": {
         "hidden": false,
-        "group": "development",
-        "order": 3
+        "group": "a - development",
+        "order": 5
       }
     },
     {
@@ -60,28 +59,65 @@
       "presentation": {
         "hidden": false,
         "group": "Test",
-        "order": 2
+        "order": 1
       }
     },
     {
       "type": "node",
       "request": "attach",
-      "name": "Attach",
+      "name": "Attach to Node",
       "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**"],
       "presentation": {
         "hidden": false,
         "group": "Utility",
         "order": 1
       }
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "webRoot": "${workspaceFolder}/src/app",
+      "port": 9222,
+      "presentation": {
+        "hidden": false,
+        "group": "Utility",
+        "order": 2
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "App: Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src/app",
+      "presentation": {
+        "hidden": false,
+        "group": "b - App",
+        "order": 2
+      }
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "App: Firefox",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src/app",
+      "presentation": {
+        "hidden": false,
+        "group": "b - App",
+        "order": 3
+      }
     }
   ],
   "compounds": [
     {
       "name": "All",
-      "configurations": ["App", "Server"],
+      "configurations": ["App: Server", "App: Chrome", "Server"],
       "presentation": {
         "hidden": false,
-        "group": "development",
+        "group": "a - development",
         "order": 1
       }
     }
