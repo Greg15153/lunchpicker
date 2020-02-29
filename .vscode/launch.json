@@ -14,7 +14,6 @@
       "port": 9228,
       "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**"],
       "env": {
-        "NODE-OPTIONS": "--inspect=0.0.0.0:9228",
         "NODE_ENV": "development"
       },
       "timeout": 300000,
@@ -68,7 +67,6 @@
       "type": "node",
       "request": "attach",
       "name": "Attach",
-      "port": 9229,
       "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**"],
       "presentation": {
         "hidden": false,
