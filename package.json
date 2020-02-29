@@ -1,8 +1,6 @@
 {
   "private": true,
-  "workspaces": [
-    "src/app"
-  ],
+  "workspaces": ["src/*"],
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
