@@ -14,7 +14,7 @@
     "terminal.integrated.shell.linux": "/bin/zsh"
   },
   // Specifies a command that should be run after the container has been created.
-  "postCreateCommand": "yarn install",
+  "postCreateCommand": "",
   // Add the IDs of extensions you want installed when the container is created in the array below.
   "extensions": [
     "dbaeumer.vscode-eslint",
