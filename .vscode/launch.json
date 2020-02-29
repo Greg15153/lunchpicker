@@ -23,8 +23,11 @@
       "env": {
         "NODE_ENV": "development"
       },
+      "autoAttachChildProcesses": true,
       "timeout": 300000,
-      "sourceMaps": true
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "internalConsole"
     },
     {
       "type": "node",
