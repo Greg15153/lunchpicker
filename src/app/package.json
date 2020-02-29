@@ -1,23 +1,11 @@
 {
   "name": "app",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "description": "Pick some lunch",
-  "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "yarn prebuild && nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "yarn prebuild && nest start",
-    "start:dev": "yarn prebuild && nest start --watch",
-    "start:debug": "yarn prebuild && nest start --debug --watch",
-    "start:prod": "yarn prebuild && node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

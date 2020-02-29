@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { CacheModule } from 'modules/cache/cache-module'
+import { CacheModule } from 'src/modules/cache/cache-module'
 
 import { DatabaseModule } from '../database/database-module'
 import PostgresUsersRepository from './infrastructure/postgres-user-repository'

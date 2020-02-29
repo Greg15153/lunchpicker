@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import CacheContext from 'modules/cache/cache-context'
+import CacheContext from 'src/modules/cache/cache-context'
 
 import DatabaseContext from '../../database/database-context'
 import User from '../models/user'

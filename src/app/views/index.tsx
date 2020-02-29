@@ -117,40 +117,38 @@ const Index: FunctionComponent = (): JSX.Element => {
     const [collapsed, setCollapsed] = useState(false)
 
     return (
-        <div>
-            <Layout style={{ minHeight: '100vh' }}>
-                <Layout.Header>
-                    <div className="search-wrapper">
-                        <Input addonAfter={<Icon type="search" theme="outlined" />} />
-                    </div>
-                </Layout.Header>
-                <Layout>
-                    <Layout.Sider collapsible collapsed={collapsed} onCollapse={(): void => setCollapsed(s => !s)}>
-                        <Menu theme="dark" mode="inline">
-                            <Menu.Item key="1">
-                                <Icon type="search" />
-                                <span>Option 1</span>
-                            </Menu.Item>
-                        </Menu>
-                    </Layout.Sider>
-                    <Layout.Content className="main">
-                        <Row>
-                            <Col span={12} offset={6}>
-                                <List
-                                    grid={{ gutter: 10, xs: 1, sm: 2, md: 4, lg: 6 }}
-                                    itemLayout="horizontal"
-                                    bordered={false}
-                                    size="small"
-                                    dataSource={items}
-                                    renderItem={onRenderCell}
-                                />
-                            </Col>
-                        </Row>
-                        <Layout.Footer>{'Footer content'}</Layout.Footer>
-                    </Layout.Content>
-                </Layout>
+        <Layout style={{ minHeight: '100vh' }}>
+            <Layout.Header>
+                <div className="search-wrapper">
+                    <Input addonAfter={<Icon type="search" theme="outlined" />} />
+                </div>
+            </Layout.Header>
+            <Layout>
+                <Layout.Sider collapsible collapsed={collapsed} onCollapse={(): void => setCollapsed(s => !s)}>
+                    <Menu theme="dark" mode="inline">
+                        <Menu.Item key="1">
+                            <Icon type="search" />
+                            <span>Option 1</span>
+                        </Menu.Item>
+                    </Menu>
+                </Layout.Sider>
+                <Layout.Content className="main">
+                    <Row>
+                        <Col span={12} offset={6}>
+                            <List
+                                grid={{ gutter: 10, xs: 1, sm: 2, md: 4, lg: 6 }}
+                                itemLayout="horizontal"
+                                bordered={false}
+                                size="small"
+                                dataSource={items}
+                                renderItem={onRenderCell}
+                            />
+                        </Col>
+                    </Row>
+                    <Layout.Footer>{'Footer content'}</Layout.Footer>
+                </Layout.Content>
             </Layout>
-        </div>
+        </Layout>
     )
 }
 export default Index

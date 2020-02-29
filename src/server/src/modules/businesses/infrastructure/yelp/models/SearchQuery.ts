@@ -1,4 +1,4 @@
-import SearchOptions from 'modules/businesses/dtos/search-options'
+import SearchOptions from 'src/modules/businesses/dtos/search-options'
 
 class SearchQuery {
     constructor(searchOptions: SearchOptions) {

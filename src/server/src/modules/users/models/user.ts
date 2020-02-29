@@ -1,8 +1,8 @@
+import Entity from 'src/util/entity'
+import Result, { Err, Ok } from 'src/util/result'
+import { isRequiredString } from 'src/util/validators'
 import { v4 as uuid } from 'uuid'
 
-import Entity from '../../../util/entity'
-import Result, { Err, Ok } from '../../../util/result'
-import { isRequiredString } from '../../../util/validators'
 import CreateUserDto from '../dto/create-user'
 import { NewUserError, ValidationError as UserValidationError } from '../errors'
 

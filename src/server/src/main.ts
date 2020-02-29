@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { NestExpressApplication } from '@nestjs/platform-express'
-import register from '@react-ssr/nestjs-express/register'
-import LoggerService from 'modules/logging/logger-service'
+import LoggerService from 'src/modules/logging/logger-service'
 
 import { AppModule } from './app-module'
 
@@ -14,11 +13,10 @@ import { AppModule } from './app-module'
     logger.setContext('Main')
     app.useLogger(logger)
 
-    // register `.tsx` as a view template engine
-    await register(app)
+    const port = 3001
 
-    app.listen(3000, async () => {
-        logger.log('Ready on http://localhost:3000')
+    app.listen(port, async () => {
+        logger.log(`Ready on http://localhost:${port}`)
     })
 })().catch(ex => {
     console.log(ex)

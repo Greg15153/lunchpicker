@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
-import CacheContext from 'modules/cache/cache-context'
-import DatabaseContext from 'modules/database/database-context'
-import Result, { Err, Ok } from 'util/result'
+import CacheContext from '../cache/cache-context'
+import DatabaseContext from '../database/database-context'
+import Result, { Err, Ok } from 'src/util/result'
 
 import HealthCheck from './models/healthcheck'
 

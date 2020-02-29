@@ -1,4 +1,4 @@
-import Business from 'modules/businesses/models/business'
+import Business from 'src/modules/businesses/models/business'
 
 interface SearchResponse {
     businesses: SearchResponseBusiness[]

@@ -3,17 +3,17 @@ import fs from 'fs'
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
-import { CacheModule } from 'modules/cache/cache-module'
-import { GeocodeModule } from 'modules/geocode/geocode-module'
-import HealthCheckModule from 'modules/healthcheck/healthcheck-module'
-import LoggerMiddleware from 'modules/logging/middleware'
-import { LoggingModule } from 'modules/logging/module'
 
-import { BusinessesModule } from '../modules/businesses/businesses-module'
-import { DatabaseModule } from '../modules/database/database-module'
-import UsersModule from '../modules/users/users-module'
 import appConfig from './app-config'
 import { AppController } from './app-controller'
+import { BusinessesModule } from './modules/businesses/businesses-module'
+import { CacheModule } from './modules/cache/cache-module'
+import { DatabaseModule } from './modules/database/database-module'
+import { GeocodeModule } from './modules/geocode/geocode-module'
+import HealthCheckModule from './modules/healthcheck/healthcheck-module'
+import LoggerMiddleware from './modules/logging/middleware'
+import { LoggingModule } from './modules/logging/module'
+import UsersModule from './modules/users/users-module'
 
 function getEnvFileConfiguration(): ConfigModuleOptions {
     const env = process.env.NODE_ENV
@@ -25,13 +25,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
         }
     }
 
-    let relative = '/../../../'
-
-    if (__dirname.includes('dist')) {
-        relative = '/../../../../'
-    }
-
-    const path = `${__dirname}${relative}.env${env ? `.${env}` : ''}`
+    const path = `${__dirname}/../.env${env ? `.${env}` : ''}`
 
     try {
         if (fs.existsSync(path)) {
