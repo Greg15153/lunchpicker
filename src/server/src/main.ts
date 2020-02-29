@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core'
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify'
 import fastify from 'fastify'
-import LoggerService from 'modules/logging/logger-service'
 
 import { AppModule } from './app-module'
+import LoggerService from './modules/logging/logger-service'
 
 const logger = new LoggerService()
 logger.setContext('Main')
