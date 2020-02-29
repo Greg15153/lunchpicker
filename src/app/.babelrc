@@ -1,5 +1,6 @@
 {
-    "presets": ["@react-ssr/nestjs-express/babel"],
+
+    "presets": ["next/babel"],
     "plugins": [
         [
             "import",
