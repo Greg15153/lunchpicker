@@ -1425,6 +1425,13 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
+"@types/styled-jsx@2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@types/styled-jsx/-/styled-jsx-2.2.3.tgz#c97ed7ad8d7b4e6ffbe84e2d4c24a49eb1b9fe54"
+  integrity sha512-mGAMonAjARMc4A4ggFJqDydUxEVlTouYlloqg8oqLlsh1+2CqtO4xbjwCKh5L99pENT/i3zTCH/GRHuVThxNLg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/superagent@*":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/superagent/-/superagent-4.1.7.tgz#a7d92d98c490ee0f802a127fdf149b9a114f77a5"
