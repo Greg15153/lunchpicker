@@ -1,5 +1,5 @@
 import { Inject } from '@nestjs/common'
-import Result from 'util/result'
+import Result from 'src/util/result'
 
 import CreateUserDto from './dto/create-user'
 import { NewUserError } from './errors'
