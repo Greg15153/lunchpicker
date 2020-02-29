@@ -51,7 +51,11 @@ class AllExceptionsFilter implements ExceptionFilter {
             }
         }
 
-        this.logger.error(JSON.stringify(errorResponse))
+        if (httpException) {
+            this.logger.warn(JSON.stringify(errorResponse))
+        } else {
+            this.logger.error(JSON.stringify(errorResponse))
+        }
 
         response.code(status).send(errorResponse)
     }
