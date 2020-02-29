@@ -1,4 +1,4 @@
-import { RequiredStringError } from '../../util/errors'
+import { RequiredStringError } from '../../util/error/errors'
 
 export type FirstNameRequiredError = RequiredStringError
 export type LastNameRequiredError = RequiredStringError
