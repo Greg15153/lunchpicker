@@ -17,8 +17,8 @@ logger.setContext('Main')
     })
     app.useLogger(logger)
 
-    app.listen(3000, '0.0.0.0', async () => {
-        logger.log('Ready on http://localhost:3000')
+    app.listen(5000, '0.0.0.0', async () => {
+        logger.log('Ready on http://localhost:5000')
     })
 })().catch(ex => {
     logger.error(ex)

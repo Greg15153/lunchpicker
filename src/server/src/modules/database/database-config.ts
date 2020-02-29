@@ -10,6 +10,6 @@ export default registerAs(
         database: process.env.DATABASE_DATABASE,
         password: process.env.DATABASE_PASSWORD,
         host: process.env.DATABASE_HOST,
-        port: parseInt(process.env.DATABASE_PORT) || 3000
+        port: parseInt(process.env.DATABASE_PORT) || 5432
     })
 )
