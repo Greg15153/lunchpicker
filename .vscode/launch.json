@@ -14,17 +14,19 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "App",
+      "name": "Server",
       "runtimeExecutable": "yarn",
-      "runtimeArgs": ["workspace", "app", "run", "start:debug"],
+      "runtimeArgs": ["workspace", "server", "run", "start:debug"],
       "port": 9229,
       "skipFiles": ["${workspaceFolder}/node_modules/**/*.js", "<node_internals>/**"],
-      "outFiles": ["${workspaceFolder}/src/app/dist/**/*.js"],
+      "outFiles": ["${workspaceFolder}/src/server/dist/**/*.js"],
       "env": {
         "NODE_ENV": "development"
       },
+      "autoAttachChildProcesses": true,
       "timeout": 300000,
-      "sourceMaps": true
+      "sourceMaps": true,
+      "outputCapture": "std"
     },
     {
       "type": "node",
