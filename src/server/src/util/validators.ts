@@ -1,4 +1,4 @@
-import { RequiredStringError } from './errors'
+import { RequiredStringError } from './error/errors'
 import Result, { Err, Ok } from './result'
 
 export function isRequiredString(name: string, s: string): Result<string, RequiredStringError> {

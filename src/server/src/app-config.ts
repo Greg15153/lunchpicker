@@ -1,5 +1,17 @@
 import { registerAs } from '@nestjs/config'
 
+export enum Environment {
+    Production,
+    Development,
+    Testing
+}
+
+export function getEnvironment(): Environment {
+    const env = process.env.NODE_ENV
+
+    return env ? Environment[env.charAt(0).toUpperCase() + env.substr(1)] : Environment.Production
+}
+
 interface AppConfig {
     adminId: string
 }

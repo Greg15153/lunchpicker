@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http'
 
 import { Injectable, NestMiddleware, Scope } from '@nestjs/common'
-import { v4 as uuid } from 'uuid'
+import { getRequestIdFromHeaders } from 'src/util/http/header-helpers'
 
 import LoggerService from './logger-service'
 
@@ -21,7 +21,7 @@ class LoggerMiddleware<TRequest, TResponse> implements NestMiddleware {
             method: req.method,
             id: req.id,
             ip: req.ip,
-            traceId: req.headers['x-request-id'] ?? uuid()
+            traceId: getRequestIdFromHeaders(req.headers)
         }
         this.logger.log(JSON.stringify(msg))
 
