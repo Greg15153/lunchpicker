@@ -68,7 +68,6 @@ const Home = (): React.ReactElement => {
                     <Input.Search
                         placeholder={'Location...'}
                         addonBefore={<Icon type="environment" theme="outlined" onClick={onEnvironmentClick} />}
-                        value={location}
                         onSearch={setLocation}
                         allowClear={true}
                     />
