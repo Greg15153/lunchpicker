@@ -1,9 +1,8 @@
+import useLocation from '@hooks/useLocation'
+import { get, post } from '@util/fetcher'
 import { Card, Col, Icon, Input, Layout, List, Row } from 'antd'
 import React, { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
-
-import useLocation from '../hooks/useLocation'
-import { get, post } from '../util/fetcher'
 
 interface Business {
     id: number
