@@ -42,7 +42,8 @@ export const toDomain = (response: SearchResponse): Business[] => {
     const businesses = response?.businesses?.map(business => {
         return {
             id: business.id,
-            name: business.name
+            name: business.name,
+            thumbnail: business.image_url
         }
     })
 
