@@ -6,6 +6,7 @@ import { ConfigModuleOptions } from '@nestjs/config/dist/interfaces'
 
 import appConfig from './app-config'
 import { AppController } from './app-controller'
+import { AuthModule } from './modules/auth/auth-module'
 import { BusinessesModule } from './modules/businesses/businesses-module'
 import { CacheModule } from './modules/cache/cache-module'
 import { DatabaseModule } from './modules/database/database-module'
@@ -52,6 +53,7 @@ function getEnvFileConfiguration(): ConfigModuleOptions {
             isGlobal: true,
             ...getEnvFileConfiguration()
         }),
+        AuthModule,
         BusinessesModule,
         CacheModule,
         DatabaseModule,
