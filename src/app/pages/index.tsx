@@ -36,31 +36,30 @@ const Home = (): React.ReactElement => {
         setLocation(gpsLocation)
     }
 
-    const onLocationChange = (event): void => {
-        setLocation(event.target.value)
-    }
-
-    const onSearch = (value: string): void => {
-        post('businesses', {
-            json: {
-                location: value
+    useEffect(() => {
+        async function setLocationFromGeocode(): Promise<void> {
+            if (reverseGeocodeData) {
+                const { location } = await reverseGeocodeData.json()
+                setGpsLocation(location)
+                setLocation(location)
             }
-        }).then(data => {
-            data.json().then(json => {
-                setBusinesses(json as Business[])
-            })
-        })
-    }
+        }
+
+        setLocationFromGeocode()
+    }, [reverseGeocodeData])
 
     useEffect(() => {
-        if (reverseGeocodeData) {
-            console.log(reverseGeocodeData)
-            reverseGeocodeData.json().then(value => {
-                setGpsLocation(value.location)
-                setLocation(value.location)
-            })
+        async function search(): Promise<void> {
+            const businesses = (await post('businesses', { json: { location } }).json()) as Business[]
+            setBusinesses(businesses)
         }
-    }, [reverseGeocodeData])
+
+        if (location) {
+            search()
+        } else {
+            setBusinesses([])
+        }
+    }, [location])
 
     return (
         <Layout>
@@ -68,10 +67,9 @@ const Home = (): React.ReactElement => {
                 <div className="search-wrapper">
                     <Input.Search
                         placeholder={'Location...'}
-                        onChange={onLocationChange}
                         addonBefore={<Icon type="environment" theme="outlined" onClick={onEnvironmentClick} />}
                         value={location}
-                        onSearch={onSearch}
+                        onSearch={setLocation}
                         allowClear={true}
                     />
                 </div>

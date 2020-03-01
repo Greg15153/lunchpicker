@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 function useLocation(settings: PositionOptions = {}): Coordinates {
     const [state, setState] = useState<Coordinates>()
 
-    const onSuccess = ({ coords }): void => {
+    const onSuccess = ({ coords }: Position): void => {
         setState(coords)
     }
 

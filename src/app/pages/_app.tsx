@@ -1,4 +1,4 @@
-import { Affix, Icon, Input, Layout, Menu } from 'antd'
+import { Icon, Layout, Menu } from 'antd'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React, { useState } from 'react'
@@ -22,9 +22,6 @@ function LunchApp({ Component, pageProps }: AppProps): React.ReactElement {
                     </Layout.Sider>
                     <Layout.Content className="main">
                         <Component {...pageProps} />
-                        <Affix style={{ position: 'absolute', bottom: 0 }}>
-                            <Layout.Footer>{'Footer content'}</Layout.Footer>
-                        </Affix>
                     </Layout.Content>
                 </Layout>
             </Layout>
