@@ -2,6 +2,9 @@ import { Controller, Get, Query } from '@nestjs/common'
 
 import GeocodeService from './geocode-service'
 
+interface ReverseGeocodeResult {
+    location: string
+}
 @Controller('geocode')
 class GeocodeController {
     public constructor(private readonly geocodeService: GeocodeService) {}
@@ -10,8 +13,12 @@ class GeocodeController {
     async reverseCoordinates(
         @Query('longitude') longitude: number,
         @Query('latitude') latitude: number
-    ): Promise<string> {
-        return this.geocodeService.reverse({ longitude, latitude })
+    ): Promise<ReverseGeocodeResult> {
+        const result = await this.geocodeService.reverse({ longitude, latitude })
+
+        return {
+            location: result
+        }
     }
 }
 

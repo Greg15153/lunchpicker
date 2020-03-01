@@ -18,6 +18,12 @@ logger.setContext('Main')
         logger: process.env.NODE_ENV?.toLowerCase() === 'development'
     })
 
+    app.enableCors({
+        origin: true,
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        allowedHeaders: 'Content-Type, Accept, X-Request-Id'
+    })
+
     app.useLogger(logger)
     app.useGlobalFilters(new ExceptionFilter(logger))
 
