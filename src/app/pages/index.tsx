@@ -9,13 +9,16 @@ interface Business {
     id: number
     name: string
     thumbnail: string
+    url: string
 }
 
 const onRenderCell = (item: Business): JSX.Element => (
     <List.Item>
-        <Card style={{ width: 140 }} hoverable cover={<img src={item.thumbnail} />}>
-            <Card.Meta title={item.name} />
-        </Card>
+        <a href={item.url} target="_blank" rel="noopener noreferrer">
+            <Card style={{ width: 140 }} hoverable cover={<img src={item.thumbnail} />}>
+                <Card.Meta title={item.name} />
+            </Card>
+        </a>
     </List.Item>
 )
 
