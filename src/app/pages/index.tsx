@@ -1,5 +1,5 @@
 import { Card, Col, Icon, Input, Layout, List, Row } from 'antd'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import useLocation from '../hooks/useLocation'
@@ -21,9 +21,9 @@ const onRenderCell = (item: Business): JSX.Element => (
 
 const Home = (): React.ReactElement => {
     const coordinates = useLocation()
-    const [location, setLocation] = useState<string>()
     const [gpsLocation, setGpsLocation] = useState<string>()
     const [businesses, setBusinesses] = useState<Business[]>()
+    const [searchState, setSearchState] = useState<string>()
 
     const { data: reverseGeocodeData } = useSWR(
         !gpsLocation && coordinates
@@ -32,8 +32,23 @@ const Home = (): React.ReactElement => {
         get
     )
 
+    const search = useCallback(
+        (location: string) => {
+            async function innerSearch(): Promise<void> {
+                const businesses = (await post('businesses', { json: { location } }).json()) as Business[]
+                setBusinesses(businesses)
+            }
+
+            if (location) {
+                innerSearch()
+            }
+        },
+        [searchState]
+    )
+
     const onEnvironmentClick = (): void => {
-        setLocation(gpsLocation)
+        setSearchState(gpsLocation)
+        search(gpsLocation)
     }
 
     useEffect(() => {
@@ -41,7 +56,7 @@ const Home = (): React.ReactElement => {
             if (reverseGeocodeData) {
                 const { location } = await reverseGeocodeData.json()
                 setGpsLocation(location)
-                setLocation(location)
+                setSearchState(location)
             }
         }
 
@@ -49,17 +64,17 @@ const Home = (): React.ReactElement => {
     }, [reverseGeocodeData])
 
     useEffect(() => {
-        async function search(): Promise<void> {
-            const businesses = (await post('businesses', { json: { location } }).json()) as Business[]
-            setBusinesses(businesses)
-        }
-
-        if (location) {
-            search()
-        } else {
+        if (!searchState) {
             setBusinesses([])
         }
-    }, [location])
+    }, [searchState])
+
+    useEffect(() => {
+        if (gpsLocation) {
+            console.log('gps location effect')
+            search(gpsLocation)
+        }
+    }, [gpsLocation])
 
     return (
         <Layout>
@@ -67,8 +82,10 @@ const Home = (): React.ReactElement => {
                 <div className="search-wrapper">
                     <Input.Search
                         placeholder={'Location...'}
+                        onChange={(e): void => setSearchState(e.target.value)}
                         addonBefore={<Icon type="environment" theme="outlined" onClick={onEnvironmentClick} />}
-                        onSearch={setLocation}
+                        onSearch={search}
+                        value={searchState}
                         allowClear={true}
                     />
                 </div>
