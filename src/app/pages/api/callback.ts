@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import auth0 from '../../util/auth0'
 
-export default async function login(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+export default async function callback(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     try {
         await auth0.handleCallback(req, res, { redirectTo: '/' })
     } catch (error) {
