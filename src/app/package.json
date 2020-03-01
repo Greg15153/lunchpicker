@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^0.10.0",
     "@zeit/next-css": "^1.0.1",
     "antd": "^3.26.12",
+    "dotenv": "^8.2.0",
     "ky": "^0.17.0",
     "next": "^9.2.2",
     "query-string": "^6.11.0",
