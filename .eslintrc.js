@@ -14,6 +14,12 @@ module.exports = {
             rules: {
                 '@typescript-eslint/explicit-function-return-type': 'off'
             }
+        },
+        {
+            files: ['src/app/pages/**/*.tsx'],
+            rules: {
+                'react/react-in-jsx-scope': 'off'
+            }
         }
     ],
     rules: {

@@ -1,6 +1,7 @@
 /* eslint-disable */
 const withCss = require('@zeit/next-css')
 const dotenv = require('dotenv')
+const path = require('path')
 
 const env = process.env.NODE_ENV
 
@@ -31,6 +32,9 @@ module.exports = withCss({
                 use: 'null-loader'
             })
         }
+
+        config.resolve.alias['hooks'] = path.join(__dirname, 'hooks')
+        config.resolve.alias['util'] = path.join(__dirname, 'util')
         return config
     },
     serverRuntimeConfig: {

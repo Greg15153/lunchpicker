@@ -15,8 +15,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@util/*": ["./util/*"],
-      "@hooks/*": ["./hooks/*"]
+      "util/*": ["./util/*"],
+      "hooks/*": ["./hooks/*"]
     }
   },
   "exclude": ["node_modules"],
