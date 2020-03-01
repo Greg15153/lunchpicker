@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
 
-interface Coordinates {
-    latitude: number
-    longitude: number
-}
-
-function useLocation(settings: any = {}): Coordinates {
+function useLocation(settings: PositionOptions = {}): Coordinates {
     const [state, setState] = useState<Coordinates>()
 
     const onSuccess = ({ coords }): void => {

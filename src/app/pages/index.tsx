@@ -1,5 +1,8 @@
 import { Card, Col, List, Row } from 'antd'
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+
+import { useFetch } from '../hooks/useFetch'
+import useLocation from '../hooks/useLocation'
 
 interface Business {
     id: number
@@ -109,6 +112,27 @@ const onRenderCell = (item: Business): JSX.Element => (
 )
 
 const Home = (): React.ReactElement => {
+    const [location, setLocation] = useState<string>()
+    const coordinates = useLocation()
+    const { state, fetchData } = useFetch<boolean>('healthcheck')
+    //const reverseGeocode = (long, lat) => useFetch<string>(`geocode/reverse?latitude=${long}&longitude=${lat}`)
+
+    useEffect(() => {
+        if (!coordinates) {
+            return
+        }
+
+        fetchData().then(() => {
+            console.log(state)
+            if (state.isError) {
+                console.log(state)
+                console.log('Error occured')
+            } else {
+                setLocation('Hello')
+            }
+        })
+    }, [setLocation, coordinates])
+
     return (
         <Row>
             <Col span={12} offset={6}>
