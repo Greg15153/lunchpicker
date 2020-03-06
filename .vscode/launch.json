@@ -5,6 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "CServer",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/cserver/LunchPicker.API/bin/Debug/netcoreapp3.1/LunchPicker.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/src/cserver/LunchPicker.API",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://+:5000"
+      }
+    },
+    {
       "type": "node",
       "request": "launch",
       "name": "App: Server",

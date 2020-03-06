@@ -7,7 +7,9 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "**/dist": true,
-    "**/.yarn": true
+    "**/.yarn": true,
+    "**/bin": true,
+    "**/obj": true
   },
   "search.exclude": {
     "**/node_modules": true,
@@ -16,7 +18,9 @@
     "**/*.code-search": true,
     "**/.yarn": true,
     "**/.pnp.js": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/bin": true,
+    "**/obj": true
   },
   "debug.node.autoAttach": "off",
   "javascript.preferences.quoteStyle": "single",
@@ -27,6 +31,9 @@
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-vscode.csharp"
   },
   "eslint.format.enable": true,
   "npm.packageManager": "yarn",

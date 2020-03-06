@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
 
 import useLocation from '../hooks/useLocation'
+import auth0 from '../util/auth0'
 import { get, post } from '../util/fetcher'
 
 interface Business {
@@ -126,4 +127,14 @@ const Home = (): React.ReactElement => {
     )
 }
 
+Home.getInitialProps = async ({ req, res }) => {
+    const { user } = await auth0.getSession(req)
+    const cache = await auth0.tokenCache(req, res)
+    const a = await cache.getAccessToken()
+
+    console.log(a)
+    console.log(user)
+
+    return { user }
+}
 export default Home
