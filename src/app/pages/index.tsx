@@ -1,10 +1,8 @@
 import { Card, Col, Icon, Input, Layout, List, Row } from 'antd'
-import React, { useCallback, useEffect, useState } from 'react'
+import useLocation from 'hooks/useLocation'
+import { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
-
-import useLocation from '../hooks/useLocation'
-import auth0 from '../util/auth0'
-import { get, post } from '../util/fetcher'
+import { get, post } from 'util/fetcher'
 
 interface Business {
     id: number
@@ -37,14 +35,10 @@ const Home = (): React.ReactElement => {
     )
 
     const search = useCallback(
-        (location: string) => {
-            async function innerSearch(): Promise<void> {
+        async (location: string) => {
+            if (location) {
                 const businesses = (await post('businesses', { json: { location } }).json()) as Business[]
                 setBusinesses(businesses)
-            }
-
-            if (location) {
-                innerSearch()
             }
         },
         [searchState]

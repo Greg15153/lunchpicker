@@ -1,6 +1,5 @@
+import auth0 from 'util/auth0'
 import { NextApiRequest, NextApiResponse } from 'next'
-
-import auth0 from '../../util/auth0'
 
 export default async function profile(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     try {

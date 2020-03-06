@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { CacheModule } from '../cache/cache-module'
 
+import { CacheModule } from '../cache/cache-module'
 import { DatabaseModule } from '../database/database-module'
 import HealthCheckController from './healthcheck-controller'
 import HealthCheckService from './healthcheck-service'
