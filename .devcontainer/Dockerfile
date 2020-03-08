@@ -13,6 +13,9 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
+# PATH UPDATE
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
 # [Optional] Version of Node.js to install.
 ARG INSTALL_NODE="true"
 ARG NODE_VERSION="lts/*"
@@ -33,11 +36,14 @@ RUN apt-get update \
     && apt-get -y install git iproute2 procps apt-transport-https gnupg2 curl lsb-release \
     #
     # Add Development packages
-    && apt-get install -y uuid-runtime postgresql postgresql-client \
+    && apt-get install -y bash-completion uuid-runtime postgresql postgresql-client \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
     && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    #
+    # Install .net core global tools
+    && dotnet tool install --global dotnet-ef \
     # [Optional] Add sudo support for the non-root user
     && apt-get install -y sudo \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
@@ -89,5 +95,17 @@ RUN apt-get update \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
+# Setup git-prompt for both root + USERNAME
+RUN curl https://raw.githubusercontent.com/lyze/posh-git-sh/master/git-prompt.sh -o /home/$USERNAME/git-prompt.sh \
+    && cp /home/$USERNAME/git-prompt.sh /root/git-prompt.sh \
+    # $USERNAME
+    && echo "source /home/${USERNAME}/git-prompt.sh" >> /home/$USERNAME/.bashrc \
+    && echo "sudo chmod 666 /var/run/docker.sock" >> /home/$USERNAME/.bashrc \
+    && echo "export PROMPT_COMMAND='__posh_git_ps1 \"\\u@\\h:\\w \" \"\\\\\\$ \";'$PROMPT_COMMAND" >> /home/$USERNAME/.bashrc \
+    # ROOT
+    && echo "source /root/git-prompt.sh" >> /root/.bashrc \
+    && echo "sudo chmod 666 /var/run/docker.sock" >> /root/.bashrc \
+    && echo "export PROMPT_COMMAND='__posh_git_ps1 \"\\u@\\h:\\w \" \"\\\\\\$ \";'$PROMPT_COMMAND" >> /root/.bashrc
+    
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
