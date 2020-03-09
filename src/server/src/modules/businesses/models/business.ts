@@ -1,7 +1,7 @@
 class Business {
     id: string
     name: string
-    thumbnail: string
+    image: string
 }
 
 export default Business

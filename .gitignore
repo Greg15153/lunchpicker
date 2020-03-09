@@ -431,6 +431,9 @@ typings/
 # dotenv environment variables file
 .env.test
 
+# appsettings
+appsettings.*.json
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 

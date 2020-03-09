@@ -43,7 +43,7 @@ export const toDomain = (response: SearchResponse): Business[] => {
         return {
             id: business.id,
             name: business.name,
-            thumbnail: business.image_url,
+            image: business.image_url,
             url: business.url
         }
     })

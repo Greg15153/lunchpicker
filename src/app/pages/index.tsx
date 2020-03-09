@@ -1,20 +1,21 @@
 import { Card, Col, Icon, Input, Layout, List, Row } from 'antd'
 import useLocation from 'hooks/useLocation'
+import queryString from 'query-string'
 import { useCallback, useEffect, useState } from 'react'
 import useSWR from 'swr'
-import { get, post } from 'util/fetcher'
+import { get } from 'util/fetcher'
 
 interface Business {
     id: number
     name: string
-    thumbnail: string
+    image: string
     url: string
 }
 
 const onRenderCell = (item: Business): JSX.Element => (
     <List.Item>
         <a href={item.url} target="_blank" rel="noopener noreferrer">
-            <Card style={{ width: 140 }} hoverable cover={<img src={item.thumbnail} />}>
+            <Card style={{ width: 140 }} hoverable cover={<img src={item.image} />}>
                 <Card.Meta title={item.name} />
             </Card>
         </a>
@@ -37,7 +38,12 @@ const Home = (): React.ReactElement => {
     const search = useCallback(
         async (location: string) => {
             if (location) {
-                const businesses = (await post('businesses', { json: { location } }).json()) as Business[]
+                const query = {
+                    search: location,
+                    radius: 10
+                }
+
+                const businesses = (await get(`businesses?${queryString.stringify(query)}`).json()) as Business[]
                 setBusinesses(businesses)
             }
         },
@@ -121,14 +127,4 @@ const Home = (): React.ReactElement => {
     )
 }
 
-Home.getInitialProps = async ({ req, res }) => {
-    const { user } = await auth0.getSession(req)
-    const cache = await auth0.tokenCache(req, res)
-    const a = await cache.getAccessToken()
-
-    console.log(a)
-    console.log(user)
-
-    return { user }
-}
 export default Home

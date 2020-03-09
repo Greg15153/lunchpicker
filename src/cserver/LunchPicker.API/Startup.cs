@@ -1,5 +1,6 @@
 using System.Reflection;
 using LunchPicker.API.Application.Queries;
+using LunchPicker.API.Application.Queries.Yelp;
 using LunchPicker.Domain.Aggregates.UserAggregate;
 using LunchPicker.Infrastructure;
 using LunchPicker.Infrastructure.Repositories;
@@ -28,8 +29,11 @@ namespace LunchPicker.API
         public void ConfigureServices(IServiceCollection services)
         {
             services
+                .AddOptions()
+                .AddHttpClient()
                 .AddCustomMvc()
                 .AddCustomDbContext(Configuration)
+                .AddYelp(Configuration)
                 .AddTransient<IUserQueries, UserQueries>()
                 .AddTransient<IUserRepository, UserRepository>()
                 .AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
@@ -85,6 +89,19 @@ namespace LunchPicker.API
                 {
                     options.UseNpgsql(configuration.GetConnectionString("LunchPickerDatabase"));
                 });
+
+            return services;
+        }
+
+        public static IServiceCollection AddYelp(this IServiceCollection services, IConfiguration configuration)
+        {
+            var x = configuration["Providers:Yelp:ApiKey"];
+
+            services.Configure<YelpOptions>(options =>
+            {
+                options.ApiKey = configuration["Providers:Yelp:ApiKey"];
+            });
+            services.AddTransient<IBusinessQueries, YelpBusinessQueries>();
 
             return services;
         }
